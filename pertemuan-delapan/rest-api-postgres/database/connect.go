@@ -10,8 +10,8 @@ import (
 
 func InitDB() {
 	var err error
-	
-	DB, err := sql.Open("postgres", config.ConnectionString())
+
+	DB, err = sql.Open("postgres", config.ConnectionString())
 	if err != nil {
 		log.Fatal("failed to connect database")
 	}

@@ -1,19 +1,15 @@
 package config
 
-import "fmt"
-
-const (
-	// api config
-	PORT = ":8080"
-
-	// database config
-	host     = "localhost"
-	port     = "5432"
-	user     = "postgres"
-	password = "root"
-	dbname   = "postgres"
+import (
+	"fmt"
+	"os"
 )
 
 func ConnectionString() string {
-	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	return fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_USERNAME"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_NAME"))
 }
